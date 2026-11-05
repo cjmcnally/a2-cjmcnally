@@ -26,7 +26,7 @@ d3.csv("penglings.csv", row => ({
 .catch(error => console.error("Could not load the csv ", error));
 
 function drawGraph(data) {
-    const margin = { top: 80, right: 60, bottom: 160, left: 120 };
+    const margin = { top: 80, right: 300, bottom: 160, left: 120 };
     const plotRight = width - margin.right;
     const plotBottom = height - margin.bottom;
 
@@ -44,8 +44,8 @@ function drawGraph(data) {
 
     const species = Array.from(new Set(data.map(d => d.species)));
     const color = d3.scaleOrdinal()
-        .domain(species)
-        .range(d3.schemeCategory10);
+  .domain(["Adelie", "Chinstrap", "Gentoo"])
+  .range(["#e3861b", "#7a1be6", "#39949b"]);
     const size = d3.scaleSqrt()
         .domain(d3.extent(data, d => d.bill_length_mm))
         .range([3, 9]);
@@ -81,6 +81,7 @@ function drawGraph(data) {
             tooltip
                 .html(
                     `Species: ${d.species}<br>` +
+                    `Bill length: ${d.bill_length_mm} mm<br>` +
                     `Flipper length: ${d.flipper_length_mm} mm<br>` +
                     `Body mass: ${d.body_mass_g} g`
                 )
@@ -131,4 +132,55 @@ function drawGraph(data) {
     .attr("font-size", "18px")
     .attr("class", "y-axis");
 
+    const legendX = plotRight + 35;
+    const sizeLegend = svg.append("g")
+        .attr("class", "size-legend")
+        .attr("transform", `translate(${legendX}, 230)`);
+
+    sizeLegend.append("text")
+        .attr("x", 0)
+        .attr("y", 0)
+        .style("font-size", "28px")
+        .text("Bill length (mm)");
+
+    [40, 50].forEach((value, i) => {
+        const cy = 45 + i * 55;
+        sizeLegend.append("circle")
+            .attr("cx", 18)
+            .attr("cy", cy)
+            .attr("r", size(value))
+            .attr("fill", "#333")
+            .attr("stroke", "#111");
+
+        sizeLegend.append("text")
+            .attr("x", 45)
+            .attr("y", cy + 7)
+            .style("font-size", "24px")
+            .text(value);
+    });
+
+    const colorLegend = svg.append("g")
+        .attr("class", "species-legend")
+        .attr("transform", `translate(${legendX}, 430)`);
+
+    colorLegend.append("text")
+        .attr("x", 0)
+        .attr("y", 0)
+        .style("font-size", "28px")
+        .text("Species");
+
+    species.forEach((name, i) => {
+        const cy = 45 + i * 50;
+        colorLegend.append("circle")
+            .attr("cx", 12)
+            .attr("cy", cy - 7)
+            .attr("r", 8)
+            .attr("fill", color(name));
+
+        colorLegend.append("text")
+            .attr("x", 35)
+            .attr("y", cy)
+            .style("font-size", "24px")
+            .text(name);
+    });
 }
