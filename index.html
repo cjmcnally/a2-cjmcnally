@@ -9,9 +9,22 @@
 
 <body>
     <div id="container"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="js/d3_impl.js"></script>
+    <script src="first/d3_impl.js"></script>
+
     <img src="img/r-ggplot.png" alt="Scatterplot made with R-ggplot">
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+    }
+
+    </script>
+    <script type="module" src="third/three_impl.js"></script>
 </body>
 
 </html>

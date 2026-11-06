@@ -1,8 +1,5 @@
-Libraries:
-- D3 -> JavaScript
-- R + GGpLot 2 -> R 
-- Altair -> Python
-
-Tools:
-- Vega-lite
-- PowerBi
+Plan:
+- D3 JavaScript
+- R + ggplot 
+- Altair + Python + Vega-lite
+- PowerBi + CSV
