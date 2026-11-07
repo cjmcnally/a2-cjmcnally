@@ -5,16 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A2 - cjmcnally</title>
+    <style>
+        .navbar {
+            display: flex;
+            gap: 1rem;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="container"></div>
+    <nav class="navbar" aria-label="Visualizations">
+        <button type="button" data-target="d3-imp">D3-Imp</button>
+        <button type="button" data-target="r-ggplot-imp">R-ggplot-Imp</button>
+        <button type="button" data-target="three-imp">ThreeJS-Imp</button>
+    </nav>
+
+    <main>
+        <section id="d3-imp" class="visualization">
+            <div id="container"></div>
+        </section>
+        <section id="r-ggplot-imp" class="visualization" hidden>
+            <img src="img/r-ggplot.png" alt="Scatterplot made with R-ggplot" width="75%" height="75%">
+        </section>
+        <section id="three-imp" class="visualization" hidden></section>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="first/d3_impl.js"></script>
-
-    <img src="img/r-ggplot.png" alt="Scatterplot made with R-ggplot">
-
     <script type="importmap">
     {
         "imports": {
@@ -22,9 +39,20 @@
             "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
         }
     }
-
     </script>
     <script type="module" src="third/three_impl.js"></script>
+    <script>
+        const buttons = document.querySelectorAll(".navbar button");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => showVisualization(button.dataset.target));
+        });
+
+        function showVisualization(target) {
+            const panels = document.querySelectorAll(".visualization");
+            panels.forEach(panel => panel.hidden = panel.id !== target);
+        }
+    </script>
 </body>
 
 </html>

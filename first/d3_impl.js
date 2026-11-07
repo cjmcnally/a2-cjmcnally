@@ -3,10 +3,11 @@ var width = 1920;
 var height = 1280;
 
 const svg = d3.select("body")
+    .select("#container")
     .append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
-    .style("width", `${width * 2}px`)
-    .style("height", `${height * 2}px`);
+    .style("width", "100%")
+    .style("height", "auto");
 
 d3.csv("penglings.csv", row => ({
     species: row.species,
