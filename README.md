@@ -8,7 +8,7 @@
 # Github Pages Link
 - I made it into a webpage because I have a 2 interactive visuals, the D3 implementation has tooltips and the THREE.js implementation is fully interactive.
 
-Link: 
+**Link:** https://cjmcnally.github.io/a2-cjmcnally/
 
 # D3:
 ![d3](img/d3-chart.png)
