@@ -1,149 +1,177 @@
-Assignment 2 - Data Visualization, 5 Ways  
-===
+# Plan: Libraries, Tools, Languages:
+1. D3 JavaScript
+2. R + ggplot 
+3. ThreeJS + D3
+4. Altair + Python + Vega-lite
+5. PowerBi + CSV
 
-Now that you have successfully made a "visualization" of shapes and lines using d3, your next assignment is to successfully make an *actual visualization*... 5 times. 
+# Github Pages Link
+- I made it into a webpage because I have a 2 interactive visuals, the D3 implementation has tooltips and the THREE.js implementation is fully interactive.
 
-The goal of this project is to gain experience with as many data visualization libraries, languages, and tools as possible.
+Link: 
 
-I have provided a small dataset about penguins, `penglings.csv`.
-Each row contains a penguin observation and several variables about it, including bill length, flipper length, and more.
+# D3:
+![d3](img/d3-chart.png)
 
-Your goal is to use 5 different tools to make the following chart:
+For this implementation (D3) I captured domain of values then lined up both axis using range before plotting. Mapped species to a color and defined size to bill_length_mm. I wanted the chart to be interactive so I researched hoverable tooltips I could add and styled based on my preference for sizes and font. 
 
-![](img/ggplot2.png)
-
-These features should be preserved as much as possible in your replication:
-
-- Data positioning: it should be an upward-trending scatterplot as shown.  Flipper Length should be on the x-axis and Body Mass on the y-axis.
-- Scales: Note the scales do not start at 0.
-- Axis ticks and labels: both axes are labeled and there are tick marks at a reasonable interval, e.g 10, 20, 30, etc.
-- Color mapping to species.
-- Size mapping to Bill Length.
-- Opacity of circles set to 0.8 or similar for a semi-transparent effect.
-
-Other features are not required. This includes:
-
-- The background grid.
-- The legends.
-
-Note that some software packages will make it **impossible** to perfectly preserve the above requirements. 
-Be sure to note where these deviate as you reflect on what a tool is good for.
-
-Improvements are also welcome as part of Technical and Design achievements.
-
-Libraries, Tools, Languages
----
-
-You are required to use 5 different tools or libraries.
-Of the 5 tools, you must use at least 3 libraries (libraries require code of some kind).
-This could be `Python, R, Javascript`, or `Java, Javascript, Matlab` or any other combination.
-Dedicated tools (i.e. Excel) do not count towards the language requirement.
-
-Otherwise, you should seek tools and libraries to fill out your 5.
-
-Below are a few ideas. Do not limit yourself to this list!
-There are new tools coming out every year and we may not have an exhaustive list of the latest and greatest.
-
-Some may be difficult choices, like Matlab or SPSS, which require large installations, licenses, and occasionally difficult UIs.
-
-I have marked a few that are strongly suggested.
-
-- R + ggplot2 `<- definitely worth trying`
-- Excel
-- d3 `<- since the rest of the class uses this, we're requiring it`
-- Altair `<- hugely popular python library. highly recommended `
-- three.js `<- well, it's a 3d library. not really recommended, but could be interesting and fun`
-- p5js `<- good for playing around. not really a chart lib`
-- Tableau
-- PowerBI
-- Vega-lite `<- very interesting formal visualization model; might be the future of the field`
-- Flourish `<- popular in recent years`
-- DataWrapper `<- popular in recent years`
-- GNUplot `<- the former CS department head uses this all the time :)`
-- SAS/SPSS/Matlab
-
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, please identify the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
-
-Tips
----
-
-- If you're using d3, key to this assignment is knowing how to load data.
-You will likely use the [`d3.json` or `d3.csv` functions](https://d3js.org/d3-dsv) to load the data you found.
-
-**Beware that these functions are *asynchronous*, meaning it's possible to "build" an empty visualization before the data actually loads. Figuring out how to do this properly can be a major hiccup if you haven't used async functions before. If this means you, start part of this project early so you don't end up in a rush!**
-
-- `penglings.csv` has a few rows with `NA` values (two have no measurements at all). Filter them out before you plot (in d3, converting `"NA"` to a number gives `NaN`, which breaks scales and circle positions).
-
-- *For web languages like d3* Don't forget to run a local webserver when you're debugging.
-Same as A1: run `python3 -m http.server` in your repo folder and visit http://localhost:8000.
-Being able to host a local webserver is an essential web development skill and very common in visualization design as well.
-
-Readme Requirements
----
-
-A good readme with screenshots and structured documentation is required for this project. 
-It should be possible to scroll through your readme to get an overview of all the tools and visualizations you produced.
-
-- Each visualization should start with a top-level heading (e.g. `# d3`)
-- Each visualization should include a screenshot. Put these in an `img` folder and link through the readme (markdown command: `![caption](img/<imgname>)`.
-- Write a paragraph for each visualization tool you use. What was easy? Difficult? Where could you see the tool being useful in the future? Did you have to use any hacks or data manipulation to get the right chart?
-
-Other Requirements
----
-
-0. Your code should be forked from the GitHub repo.
-1. Place all code, Excel sheets, etcetera in a named folder. For example, `r-ggplot, matlab, mathematica, excel` and so on.
-2. Your writeup (readme.md in the repo) should also contain the following:
-
-- Description of the Technical achievements you attempted with this visualization.
-  - Some ideas include interaction, such as mousing over to see more detail about the point selected.
-- Description of the Design achievements you attempted with this visualization.
-  - Some ideas include consistent color choice, font choice, element size (e.g. the size of the circles).
-
-GitHub Details
----
-
-- Fork the GitHub Repository. You now have a copy associated with your username.
-- Make changes to fulfill the project requirements. 
-- To submit, make a [Pull Request](https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request-from-a-fork) on the original repository, and put the link to your pull request in the A2 assignment on Canvas.
-- Note: name your pull request using the following scheme: 
-```
-a2-your Gh username-your first name-your lastname
-```
-
-Grading
----
-
-Grades on a 120 point scale. 
-24 points will be based on your Technical and Design achievements, as explained in your readme. 
-
-Make sure you include the files necessary to reproduce your plots.
-You should structure these in folders if helpful.
-We will choose some at random to run and test.
-
-**NOTE: THE BELOW IS A SAMPLE ENTRY TO GET YOU STARTED ON YOUR README. YOU MAY DELETE THE ABOVE.**
-
-# R + ggplot2 + R Markdown
-
-R is a language primarily focused on statistical computing.
-ggplot2 is a popular library for charting in R.
-R Markdown is a document format that compiles to HTML or PDF and allows you to include the output of R code directly in the document.
-
-To visualize the penguins dataset, I made use of ggplot2's `geom_point()` layer, with aesthetics functions for the color and size.
-
-While it takes time to find the correct documentation, these functions made the effort creating this chart minimal.
-
-![ggplot2](img/ggplot2.png)
-
-# d3...
-
-(And so on...)
-
+The main challenge I had was adding the tooltips. Adding the axes and axes labels was time consuming and a little challenging as well.
 
 ## Technical Achievements
-- **Proved P=NP**: Using a combination of...
-- **Solved AI Forever**: ...
+- Interaction: Tooltips on hover, shows details on the point hovered on
+- Included all charts onto one webpage, user can navigate using navbar at the top of the page
 
-### Design Achievements
-- **Re-vamped Apple's Design Philosophy**: As demonstrated in my colorscheme...
+## Design Achievements
+- Was able to include legends (Bill Length & Species)
+- Matched color groups to the image that was provided
+- Used a smaller scale for the points to show all of them clearly 
+- Added descriptive axis and encoding titles
+
+## Usefulness
+- I would say this tool is fairly useful in displaying data, it did take a lot more time and code to produce a output compared to other tools such as Altair, R + ggplot2, and PowerBi. 
+
+
+### References
+- https://d3-graph-gallery.com/graph/custom_legend.html
+- https://stackoverflow.com/questions/49599691/how-to-load-data-from-a-csv-file-in-d3-v5
+- https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js#d3.csv
+- https://d3js.org/d3-axis
+- https://d3js.org/d3-color
+
+### AI Usage
+- For this implementation (D3) GitHub Copilot was used for help on debugging the tooltip feature, and for formatting the legends.
+
+---
+
+# R + ggplot2:
+![ggplot2](img/r-ggplot.png)
+
+For this implementation (R + ggplot2) I used the readr package because the base read.csv function wasn't extracting the data I wanted correctly. I used complete.cases() to filter out any data thats missing and plotted using ggplot + geom_point(). I was able to include the legends and exported the chart as a png because I didn't want to use RMarkdown.
+
+There wasn't much that was challenging, the only thing that caused issues was the initial loading of the csv and I fixed it with using the readr library.
+
+## Technical Achievements
+- Exported the chart as a png and loading it into the webpage as that
+- Included all charts onto one webpage, user can navigate using navbar at the top of the page
+
+## Design Achievements
+- Included the legends
+- Matched color groups to the image that was provided
+- Used semi-transparent points to make overlapping data easier to see
+- Looked pretty similar to the example chart that was provided; the spacing between points were different
+- Added descriptive axis and encoding titles
+
+## Usefulness
+- I would say this tool is definitely useful in displaying data, it didn't take a lot of time to code and it accurately represents the data.
+
+### References
+- https://learn-r.org/r-tutorial/read-csv.php
+- https://www.datanovia.com/learn/programming/importing-exporting-data/read-csv-txt-in-r
+- https://www.geeksforgeeks.org/r-language/return-a-logical-vector-with-missing-values-removed-in-r-programming-complete-cases-function/
+
+### AI Usage
+- For this implementation (R + ggplot) GitHub Copilot was barely used, it helped with position the legends.
+
+---
+
+# ThreeJS + D3:
+![threeJS](img/three-chart.gif)
+
+This implementation (THREE.js + D3) was the hardest of all my chart implementations. I have worked with THREE.js in the past but never to create 3D Charts. 
+Basically everything was a challenge besides the OrbitControls and Scene setup. The most challenging being the Axes, Ticks, and Labels, the second most challenging would be the mesh creation and positioning of the spheres. And a lot of thought was put into the 3D aspect and what the Z-Axis should portray. 
+
+In the end, it's all on the webpage and it's pretty quick. I made it into a GIF on this MD file but I recommend playing with it on the GitHub pages link I provided. The only thing I couldn't figure out / didn't have enough time, was to adding the legends. I think I could just do something similar to in the axes function where I created the addLabel const but I thought it was fine to leave it as is.
+
+## Technical Achievements
+- Adding the camera, scene, and 3D renderer 
+- Added Orbit Controls --> Interactive with mouse click down to pan around and scrolls to zoom in and out.
+- Loading and parsing data with D3
+- Included the billDepth for the Z-Axis, while still using bill_length_mm for the size of the spheres
+- Async animation call once loading and parsing is complete
+
+## Design Achievements
+- There is the 3D layer so there's a Z-Axis which I set to be the Bill Depth
+- Adding the 3 axes and labels to be visible on camera movements
+- Used semi-transparent points to make overlapping data easier to see
+- Adding vectors to be the ticks on the axes, there are no functions for creating graphs or charts so vectors were used for the ticks
+- Added descriptive axis and encoding titles
+
+## Usefulness
+- THREE.js is probably the least useful in relation to time, this implementation took the most time out of all of them and while it does display the data accurately and is **very cool** with the 3D aspect and interactivity. There are simply better tools for quicker chart creations.
+
+### References
+- https://www.youtube.com/watch?v=ub2u2VIbiyE&t=1s
+- https://stackoverflow.com/questions/19564051/labelling-the-vertices-in-axishelper-of-three-js
+- https://threejs.org/docs/#AxesHelper
+- https://threejs.org/docs/#CSS2DRenderer
+- https://stackoverflow.com/questions/71632837/using-the-three-js-css2drenderer-to-position-html-elements-from-the-top-left
+- https://threejs.org/docs/#LineSegments
+- https://threejs.org/docs/#LineBasicMaterial
+
+### AI Usage
+- For this implementation (THREE.js + D3) GitHub Copilot was used for help on debugging the axes positioning, tick positioning, and labels.
+
+---
+
+# Altair + Vega-Lite:
+![altair-vega](img/altair-vega-chart.png)
+
+This implementation (Altair + Python + Vega-Lite) I used pathlib and pandas for the csv loading. In pandas I used dropna for filtering out missing values.
+
+The challenging part I had was figuring out what to use for loading and filtering out the missing values in the data. I also had a tough time figuring out Vega-Lite and how to display my chart on the webpage. I found documentation for embedding Vega charts in HTML, which included creating a spec file. I tried adding interaction, but pan and zoom do not work in the embedded chart, so this visualization is currently static.
+
+## Technical Achievements
+- Embedded the Vega-Lite chart in the webpage using Vega-Embed
+- Loaded the CSV with pandas and removed rows missing values used in the chart
+
+## Design Achievements
+- Matched color groups to the image that was provided
+- Encoded flipper length and body mass on the x and y-axes, species with color, and bill length with point size
+- Used semi-transparent points to make overlapping data easier to see
+- Added descriptive axis and encoding titles
+
+## Usefulness
+- I would say this tool is definitely useful in displaying data, it didn't take a lot of time to code and it accurately represents the data.
+
+### References
+- https://pypi.org/project/altair/
+- https://altair-viz.github.io/getting_started/overview.html#overview
+- https://altair-viz.github.io/user_guide/data.html
+- https://altair-viz.github.io/user_guide/encodings/index.html
+- https://altair-viz.github.io/user_guide/interactions/bindings_widgets.html
+- https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html
+- https://github.com/vega/vega-embed
+- https://stackoverflow.com/questions/72465478/how-to-use-vegaembed-to-embed-an-altair-visualization-into-html-document
+- https://altair-viz.github.io/gallery/deviation_ellipses.html
+
+### AI Usage
+- For this implementation (Altair + Vega-Lite) GitHub Copilot was used for creation of the spec variable in my index.html.
+
+---
+
+# PowerBI:
+![powerbi](img/powerbi-chart.png)
+
+I've never used PowerBi before so basically everything was a bit of a struggle, mainly transforming the data to be usable. I wasn't able to figure out how to add multiple legends so I ended up with just the species as one.  
+
+## Technical Achievements
+- Imported the penguin data and used Power Query to transform it into a usable format for the chart
+- Built a scatter chart mapping flipper length to the x-axis and body mass to the y-axis
+- Encoded species with color and bill length with bubble size
+
+## Design Achievements
+- Matched color groups to the image that was provided
+- Kept axis labels and gridlines visible to make values easier to compare
+- Used semi-transparent bubbles to help show overlapping observations
+
+## Usefulness
+- I would say this tool is definitely useful in displaying data, it didn't take a lot of time to create and it accurately represents the data.
+
+### References
+- https://learn.microsoft.com/en-us/power-query/applied-steps
+- https://learn.microsoft.com/en-us/power-query/dealing-with-errors
+- https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-scatter
+- https://learn.microsoft.com/en-us/power-query/replace-values
+
+### AI Usage
+- AI was not used for this implementation, but helped with creating bullet points for achievements
